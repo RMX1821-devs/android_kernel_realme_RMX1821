@@ -109,8 +109,6 @@
 */
 #include <soc/oppo/oppo_project.h>
 #include <linux/leds.h>
-/* Ling.Guo@PSW.MM.Display.LCD.Machine, 2018/12/03,add for mm kevent fb. */
-#include <linux/oppo_mm_kevent_fb.h>
 #include <linux/time.h>
 #include <linux/timekeeping.h>
 #include <linux/jiffies.h>
@@ -5566,10 +5564,6 @@ int force_back_to_full_roi(void)
 int primary_display_suspend(void)
 {
 	enum DISP_STATUS ret = DISP_STATUS_OK;
-	#ifdef VENDOR_EDIT
-	/* Ling.Guo@PSW.MM.Display.LCD.Machine, 2018/12/03,add for mm kevent fb. */
-	unsigned char payload[100] = "";
-	#endif
 
 	DISPCHECK("%s begin\n", __func__);
 
@@ -5808,9 +5802,6 @@ done:
 	if (HBM_mode == 8) {
 		HBM_mode = 0;
 		get_monotonic_boottime(&panel_time_off);
-		scnprintf(payload, sizeof(payload), "EventID@@%d$$hbm@@hbm state on time = %ld sec$$ReportLevel@@%d",
-			OPPO_MM_DIRVER_FB_EVENT_ID_HBM,(panel_time_off.tv_sec - hbm_on_start),OPPO_MM_DIRVER_FB_EVENT_REPORTLEVEL_LOW);
-		upload_mm_kevent_fb_data(OPPO_MM_DIRVER_FB_EVENT_MODULE_DISPLAY,payload);
 	}
 	if (is_project(OPPO_19531) || is_project(OPPO_19391)) {
 		ds_rec_fpd = false;
