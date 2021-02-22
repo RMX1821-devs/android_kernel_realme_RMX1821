@@ -49,6 +49,7 @@ config MICROTRUST_TZ_DRIVER_MTK_BOOTPROF
 	depends on MTPROF
 	default n
 	---help---
+
 	  Enables the support of Mediatek bootprof feature in Microtrust
 	  tz_driver. This feature is for tracking boot progress by
 	  notifying mtk bootprof driver in each check point.
