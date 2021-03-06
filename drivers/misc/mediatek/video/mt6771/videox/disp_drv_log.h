@@ -51,21 +51,21 @@
 #define DISPPR_WARN(string, args...)					\
 	do {								\
 		dprec_logger_pr(DPREC_LOGGER_ERROR, string, ##args);	\
-		pr_warn("[DISP][%s #%d]warn:"string,			\
+		pr_debug("[DISP][%s #%d]warn:"string,			\
 				__func__, __LINE__, ##args); \
 	} while (0)
 
 #define DISPWARN(string, args...)					\
 	do {								\
 		dprec_logger_pr(DPREC_LOGGER_ERROR, string, ##args);	\
-		pr_warn("[DISP][%s #%d]warn:"string,			\
+		pr_debug("[DISP][%s #%d]warn:"string,			\
 				__func__, __LINE__, ##args);		\
 	} while (0)
 
 #define DISPPR_ERROR(string, args...)					\
 	do {								\
 		dprec_logger_pr(DPREC_LOGGER_ERROR, string, ##args);	\
-		pr_err("[DISP][%s #%d]ERROR:"string,			\
+		pr_debug("[DISP][%s #%d]ERROR:"string,			\
 				__func__, __LINE__, ##args);		\
 	} while (0)
 
@@ -103,7 +103,7 @@
 				DB_OPT_DEFAULT | DB_OPT_MMPROFILE_BUFFER | \
 				DB_OPT_DISPLAY_HANG_DUMP | DB_OPT_DUMP_DISPLAY,\
 				disp_name, "[DISP] error"string, ##args); \
-		pr_err("DISP error: "string, ##args);			\
+		pr_debug("DISP error: "string, ##args);			\
 	} while (0)
 
 # define disp_aee_db_print(string, args...)				\
