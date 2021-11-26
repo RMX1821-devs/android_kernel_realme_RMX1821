@@ -1311,7 +1311,7 @@ static int external_display_check_recovery_worker_kthread(void *data)
 	struct sched_param param = {.sched_priority = 87 };
 	int ret = 0;
 	int i = 0;
-	int esd_try_cnt = 5; /* 20; */
+	int esd_try_cnt = 1; /* 20; */
 	int recovery_done = 0;
 
 	DISPFUNC();
